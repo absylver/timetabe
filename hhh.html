@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f7f7f7;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #certificate-preview {
+            width: 100%;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+        .controls {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        .controls input, .controls select, .controls button {
+            margin-bottom: 10px;
+        }
+        @media (min-width: 768px) {
+            .controls {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .controls input, .controls select, .controls button {
+                margin-bottom: 0;
+                width: 48%;
+            }
+            .controls button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Certificate Generator</h1>
+        <div class="controls">
+            <input type="file" id="design-input" accept="image/*" class="form-control">
+            <input type="file" id="file-input" accept=".xlsx, .xls" class="form-control">
+            <select id="font-select" class="form-control">
+                <option value="Arial">Arial</option>
+                <option value="Courier New">Courier New</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Verdana">Verdana</option>
+            </select>
+            <input type="number" id="font-size" value="50" class="form-control">
+            <input type="color" id="font-color" value="#FF0000" class="form-control"> <!-- Default color set to red -->
+            <input type="number" id="pos-x" value="800" class="form-control">
+            <input type="number" id="pos-y" value="780" class="form-control">
+            <button id="generate-single" class="btn btn-primary">Generate Single Certificate</button>
+            <button id="generate-all" class="btn btn-success">Generate All Certificates</button>
+        </div>
+        <canvas id="certificate-preview"></canvas>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script> <!-- Separate JavaScript file for better organization -->
+</body>
+</html>
